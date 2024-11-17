@@ -13,6 +13,6 @@ public class MemberForm {
     private String password;
 
     public Member toEntity() {
-        return new Member(null, email, password);
+        return new Member(id, email, password);
     }
 }
