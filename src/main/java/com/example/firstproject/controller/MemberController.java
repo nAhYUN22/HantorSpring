@@ -19,6 +19,11 @@ public class MemberController {
     @Autowired
     MemberRepository memberRepository;
 
+    @GetMapping("/members/new")
+    public String newMemberForm(){
+        return "members/new";
+    }
+
     @GetMapping("/signup")
     public String signup() {
         return "members/new";
@@ -36,7 +41,7 @@ public class MemberController {
         Member saved = memberRepository.save(member);
         log.info(saved.toString());
 //        System.out.println(saved.toString());
-        return "";
+        return "redirect:/members/"+saved.getId();
     }
     @GetMapping("/members/{id}")
     public String show(@PathVariable Long id, Model model) {

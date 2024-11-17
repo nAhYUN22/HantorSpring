@@ -38,7 +38,7 @@ public class ArticleController {
         Article saved = articleRepository.save(article);
         log.info(saved.toString());
 //        System.out.println(saved.toString());
-        return "";
+        return "redirect:/articles/" + saved.getId();
     }
     @GetMapping("/articles/{id}") // 데이터 조회 요청 접수
     public String show(@PathVariable Long id, Model model){ //매개변수로 id 받아오기
@@ -50,7 +50,7 @@ public class ArticleController {
         //3. 뷰 페이지 반환하기
         return "articles/show";
     }
-    @GetMapping("/articles")
+    @GetMapping("/articles/")
     public String index(Model model){
         //1. 모든 데이터 가져오기
         List<Article> articleEntityList = articleRepository.findAll();
